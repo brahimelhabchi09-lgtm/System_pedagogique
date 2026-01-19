@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+ <meta charset="utf-8" />
+ <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+ <title>Student Skill Evaluation - Simplon</title>
+ <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+ <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+ <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet" />
+ <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+ <script id="tailwind-config">
+ tailwind.config = {
+ darkMode: "class",
+ theme: {
+ extend: {
+ colors: {
+ "primary": "#a1e619",
+ "background-light": "#fcfaf2", // Cream vintage paper feel
+ "background-dark": "#1c2111",
+ },
+ fontFamily: {
+ "display": ["Lexend"]
+ },
+ borderRadius: {
+ "DEFAULT": "0.25rem",
+ "lg": "0.5rem",
+ "xl": "0.75rem",
+ "full": "9999px"
+ },
+ },
+ },
+ }
+ </script>
+ <style>
+ .vintage-border {
+ border: 1px solid #1c2111;
+ }
+
+ .paper-shadow {
+ box-shadow: 2px 2px 0px 0px rgba(28, 33, 17, 1);
+ }
+
+ .skill-radio:checked+label {
+ background-color: #a1e619;
+ color: #1c2111;
+ font-weight: 700;
+ }
+
+ body {
+ font-family: 'Lexend', sans-serif;
+ }
+ </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#1c2111] dark:text-[#fcfaf2] min-h-screen">
+ <div class="layout-container flex h-full grow flex-col">
+ <!-- TopNavBar -->
+ <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#1c2111] px-10 py-3 bg-background-light dark:bg-background-dark">
+ <div class="flex items-center gap-4 text-[#1c2111] dark:text-white">
+ <div class="size-6 bg-primary flex items-center justify-center rounded-sm vintage-border">
+ <span class="material-symbols-outlined text-sm font-bold">school</span>
+ </div>
+ <h2 class="text-lg font-black leading-tight tracking-tight uppercase">Simplon Pedagogical Ledger</h2>
+ </div>
+ <div class="flex flex-1 justify-end gap-8">
+ <div class="flex items-center gap-9">
+ <a class="text-sm font-bold uppercase tracking-widest hover:underline" href="#">Dashboard</a>
+ <a class="text-sm font-bold uppercase tracking-widest hover:underline" href="#">Classes</a>
+ <a class="text-sm font-bold uppercase tracking-widest hover:underline" href="#">Sprints</a>
+ <a class="text-sm font-bold uppercase tracking-widest hover:underline text-primary bg-[#1c2111] px-2" href="#">Evaluations</a>
+ </div>
+ <div class="flex gap-2">
+ <button class="flex items-center justify-center rounded-lg h-10 w-10 bg-[#eff3e7] dark:bg-white/10 text-[#171b0e] dark:text-white vintage-border">
+ <span class="material-symbols-outlined">notifications</span>
+ </button>
+ <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 vintage-border" data-alt="Professional portrait of a teacher" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD4okU5caFBxJ2xkNO7MDKJWeIeIqSUS8RGfvslzVZzGqGMpyIlQN-U21o7Ibu6Vql8ylHHcif_Eh2c9tFAmbmjfibj1Im8LxfGTqQJa-ti2bXm7TwB4vuKFgtncDdPYl4g5SYxEnc9wb4K-gXhItfb59_FyQ9ex62O44xYDq_SmgQ0yaABS9Rpo7PvEtOipF9zQl3LZtIyGJxJoo-tJAVvkbjMMANE7lIlXBzwSMo57_zCCKzG5M0doPGhurOUugNJQgoEh8gzolA");'></div>
+ </div>
+ </div>
+ </header>
+ <main class="flex-1 max-w-[1200px] mx-auto w-full p-8">
+ <!-- Breadcrumbs -->
+ <div class="flex flex-wrap gap-2 pb-6">
+ <a class="text-[#7f974e] text-sm font-medium uppercase tracking-tighter" href="#">Evaluations</a>
+ <span class="text-[#7f974e] text-sm font-medium">/</span>
+ <span class="text-[#171b0e] dark:text-white text-sm font-bold uppercase tracking-tighter">Student Debriefing</span>
+ </div>
+ <!-- Page Heading -->
+ <div class="flex flex-wrap justify-between items-end gap-3 pb-8 border-b-2 border-[#1c2111] mb-8">
+ <div class="flex flex-col gap-1">
+ <p class="text-5xl font-black leading-tight tracking-tighter uppercase italic">Skill Assessment</p>
+ <p class="text-[#7f974e] text-base font-medium">Academic Year 2023-2024 • Instructor Evaluation Portal</p>
+ </div>
+ <div class="flex gap-4">
+ <button class="flex items-center justify-center rounded-lg h-12 px-6 bg-white dark:bg-white/5 vintage-border paper-shadow text-sm font-bold uppercase tracking-widest">
+ <span>Evaluation History</span>
+ </button>
+ </div>
+ </div>
+ <!-- Context Selection Grid -->
+ <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+ <div class="flex flex-col gap-2">
+ <label class="text-xs font-black uppercase tracking-widest">Classroom</label>
+ <select class="w-full bg-white dark:bg-zinc-800 border-2 border-[#1c2111] p-3 text-sm font-bold focus:ring-0 focus:border-primary rounded-none paper-shadow">
+ <option>DWWM - Promo 2024</option>
+ <option>CDA - Promo 2023</option>
+ <option>Data AI - Paris</option>
+ </select>
+ </div>
+ <div class="flex flex-col gap-2">
+ <label class="text-xs font-black uppercase tracking-widest">Sprint</label>
+ <select class="w-full bg-white dark:bg-zinc-800 border-2 border-[#1c2111] p-3 text-sm font-bold focus:ring-0 focus:border-primary rounded-none paper-shadow">
+ <option>Sprint 04: Backend Mastery</option>
+ <option>Sprint 05: Frontend UI</option>
+ </select>
+ </div>
+ <div class="flex flex-col gap-2">
+ <label class="text-xs font-black uppercase tracking-widest">Brief</label>
+ <select class="w-full bg-white dark:bg-zinc-800 border-2 border-[#1c2111] p-3 text-sm font-bold focus:ring-0 focus:border-primary rounded-none paper-shadow">
+ <option>Brief 08: REST API Design</option>
+ <option>Brief 09: Database Auth</option>
+ </select>
+ </div>
+ <div class="flex flex-col gap-2">
+ <label class="text-xs font-black uppercase tracking-widest">Student</label>
+ <select class="w-full bg-white dark:bg-zinc-800 border-2 border-[#1c2111] p-3 text-sm font-bold focus:ring-0 focus:border-primary rounded-none paper-shadow">
+ <option>Jean-Baptiste Poquelin</option>
+ <option>Marie Curie</option>
+ <option>Victor Hugo</option>
+ </select>
+ </div>
+ </div>
+ <!-- Skill Evaluation Matrix -->
+ <div class="bg-white dark:bg-zinc-900 vintage-border mb-12 overflow-hidden paper-shadow">
+ <div class="bg-[#1c2111] text-white p-4 flex justify-between items-center">
+ <h3 class="text-lg font-black uppercase tracking-tighter">Competency Matrix</h3>
+ <span class="text-xs font-bold bg-primary text-[#1c2111] px-2 py-0.5 rounded">FORM-2024-B8</span>
+ </div>
+ <div class="divide-y-2 divide-[#1c2111]">
+ <!-- Skill Header -->
+ <div class="grid grid-cols-12 bg-[#f0f0e8] dark:bg-zinc-800 p-4 font-black text-xs uppercase tracking-widest">
+ <div class="col-span-6">Skill / Competency Description</div>
+ <div class="col-span-2 text-center border-l-2 border-[#1c2111]">Imiter</div>
+ <div class="col-span-2 text-center border-l-2 border-[#1c2111]">S'adapter</div>
+ <div class="col-span-2 text-center border-l-2 border-[#1c2111]">Transposer</div>
+ </div>
+ <!-- Skill Row 1 -->
+ <div class="grid grid-cols-12 p-4 items-center group hover:bg-primary/5">
+ <div class="col-span-6 flex flex-col gap-1">
+ <span class="font-bold text-sm">C1. Design technical architecture</span>
+ <span class="text-xs text-gray-500 italic">Ability to map out relational entities and API endpoints.</span>
+ </div>
+ <div class="col-span-2 flex justify-center border-l border-zinc-200 dark:border-zinc-700">
+ <input class="hidden skill-radio" id="s1-imiter" name="skill-1" type="radio" />
+ <label class="cursor-pointer px-4 py-2 border vintage-border text-[10px] font-black uppercase tracking-widest hover:bg-primary/20 transition-colors" for="s1-imiter">Select</label>
+ </div>
+ <div class="col-span-2 flex justify-center border-l border-zinc-200 dark:border-zinc-700">
+ <input class="hidden skill-radio" id="s1-adapter" name="skill-1" type="radio" />
+ <label class="cursor-pointer px-4 py-2 border vintage-border text-[10px] font-black uppercase tracking-widest hover:bg-primary/20 transition-colors" for="s1-adapter">Select</label>
+ </div>
+ <div class="col-span-2 flex justify-center border-l border-zinc-200 dark:border-zinc-700">
+ <input class="hidden skill-radio" id="s1-transposer" name="skill-1" type="radio" />
+ <label class="cursor-pointer px-4 py-2 border vintage-border text-[10px] font-black uppercase tracking-widest hover:bg-primary/20 transition-colors" for="s1-transposer">Select</label>
+ </div>
+ </div>
+ <!-- Skill Row 2 -->
+ <div class="grid grid-cols-12 p-4 items-center group hover:bg-primary/5">
+ <div class="col-span-6 flex flex-col gap-1">
+ <span class="font-bold text-sm">C2. Security &amp; Authentication</span>
+ <span class="text-xs text-gray-500 italic">Implementing JWT and securing middleware routes.</span>
+ </div>
+ <div class="col-span-2 flex justify-center border-l border-zinc-200 dark:border-zinc-700">
+ <input class="hidden skill-radio" id="s2-imiter" name="skill-2" type="radio" />
+ <label class="cursor-pointer px-4 py-2 border vintage-border text-[10px] font-black uppercase tracking-widest hover:bg-primary/20 transition-colors" for="s2-imiter">Select</label>
+ </div>
+ <div class="col-span-2 flex justify-center border-l border-zinc-200 dark:border-zinc-700">
+ <input checked="" class="hidden skill-radio" id="s2-adapter" name="skill-2" type="radio" />
+ <label class="cursor-pointer px-4 py-2 border vintage-border text-[10px] font-black uppercase tracking-widest hover:bg-primary/20 transition-colors" for="s2-adapter">Select</label>
+ </div>
+ <div class="col-span-2 flex justify-center border-l border-zinc-200 dark:border-zinc-700">
+ <input class="hidden skill-radio" id="s2-transposer" name="skill-2" type="radio" />
+ <label class="cursor-pointer px-4 py-2 border vintage-border text-[10px] font-black uppercase tracking-widest hover:bg-primary/20 transition-colors" for="s2-transposer">Select</label>
+ </div>
+ </div>
+ <!-- Skill Row 3 -->
+ <div class="grid grid-cols-12 p-4 items-center group hover:bg-primary/5">
+ <div class="col-span-6 flex flex-col gap-1">
+ <span class="font-bold text-sm">C3. Documentation &amp; Clean Code</span>
+ <span class="text-xs text-gray-500 italic">Commenting, Swagger documentation, and variable naming.</span>
+ </div>
+ <div class="col-span-2 flex justify-center border-l border-zinc-200 dark:border-zinc-700">
+ <input class="hidden skill-radio" id="s3-imiter" name="skill-3" type="radio" />
+ <label class="cursor-pointer px-4 py-2 border vintage-border text-[10px] font-black uppercase tracking-widest hover:bg-primary/20 transition-colors" for="s3-imiter">Select</label>
+ </div>
+ <div class="col-span-2 flex justify-center border-l border-zinc-200 dark:border-zinc-700">
+ <input class="hidden skill-radio" id="s3-adapter" name="skill-3" type="radio" />
+ <label class="cursor-pointer px-4 py-2 border vintage-border text-[10px] font-black uppercase tracking-widest hover:bg-primary/20 transition-colors" for="s3-adapter">Select</label>
+ </div>
+ <div class="col-span-2 flex justify-center border-l border-zinc-200 dark:border-zinc-700">
+ <input checked="" class="hidden skill-radio" id="s3-transposer" name="skill-3" type="radio" />
+ <label class="cursor-pointer px-4 py-2 border vintage-border text-[10px] font-black uppercase tracking-widest hover:bg-primary/20 transition-colors" for="s3-transposer">Select</label>
+ </div>
+ </div>
+ </div>
+ </div>
+ <!-- Pedagogical Comments -->
+ <div class="flex flex-col gap-4 mb-12">
+ <div class="flex items-center gap-3">
+ <span class="material-symbols-outlined text-primary">edit_note</span>
+ <h3 class="text-lg font-black uppercase tracking-tighter">Pedagogical Observations</h3>
+ </div>
+ <div class="relative bg-white dark:bg-zinc-800 vintage-border p-6 paper-shadow">
+ <!-- Ruled lines simulation -->
+ <div class="absolute inset-0 pointer-events-none opacity-10" style="background-image: linear-gradient(#1c2111 1px, transparent 1px); background-size: 100% 2rem;"></div>
+ <textarea class="w-full bg-transparent border-none focus:ring-0 p-0 text-lg font-medium leading-[2rem] placeholder:text-gray-300 dark:placeholder:text-gray-600 relative z-10" placeholder="Type qualitative feedback regarding the student's methodology, soft skills, and specific technical hurdles encountered..." rows="6"></textarea>
+ </div>
+ </div>
+ <!-- Footer Actions -->
+ <div class="flex justify-end items-center gap-6 border-t-2 border-[#1c2111] pt-8 mb-20">
+ <button class="text-xs font-black uppercase tracking-widest hover:underline text-[#1c2111] dark:text-white">
+ Cancel and Discard
+ </button>
+ <button class="flex items-center justify-center rounded-lg h-14 px-10 bg-white dark:bg-zinc-700 vintage-border paper-shadow text-sm font-black uppercase tracking-[0.2em] hover:bg-gray-50 transition-all">
+ Save Draft
+ </button>
+ <button class="flex items-center justify-center rounded-lg h-14 px-12 bg-primary text-[#1c2111] vintage-border paper-shadow text-sm font-black uppercase tracking-[0.2em] hover:brightness-105 transition-all">
+ Finalize &amp; Submit
+ </button>
+ </div>
+ </main>
+ <!-- Footer Note -->
+ <footer class="p-8 text-center text-[10px] font-bold uppercase tracking-widest opacity-40">
+ SIMPLON.CO ACADEMIC RECORD SYSTEM © 2024 • ALL RIGHTS RESERVED • VERSION 4.2.1-LE
+ </footer>
+ </div>
+</body>
+
+</html>

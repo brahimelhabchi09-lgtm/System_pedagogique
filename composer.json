@@ -1,0 +1,13 @@
+
+{
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Core\\": "core/"
+        }
+    },
+    "require": {
+        "eftec/bladeone": "^4.19"
+    }
+}
