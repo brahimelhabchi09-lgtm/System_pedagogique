@@ -7,10 +7,16 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Teacher Dashboard Overview</title>
     <!-- Material Symbols -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&amp;family=Crimson+Pro:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&amp;family=Crimson+Pro:ital,wght@0,400;0,600;1,400&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script id="tailwind-config">
@@ -56,13 +62,34 @@
         .notebook-texture {
             background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuAs_4Adgm3sf5nzBal-bPR3RsD0oSeBttWBwkefGO3EzjvlU8XiAWkS_c81vX7YEgkCVmB6NxdbaoLzfRqAkwOnY6mE7TZywBQRWiIzTKFD3xOQYbhExYJgAV7tvYV_UbQ3BeY_ZMxTAHwGlRskzX3R_zSkMN00zGc8BMWbb8vpkIvZoxD63uvBikiBA1LBJaxELjwlLF8j0T9L6sA5zXBeNM6MCQxqlvC52B5jwhO2Luvn2-TAyMgU1SIXQmL5aAVzYfavY2Fhbu0)
         }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        .brand-shimmer {
+            background: linear-gradient(90deg, #2a2d24 0%, #a1e619 25%, #2a2d24 50%, #a1e619 75%, #2a2d24 100%);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shimmer 5s infinite linear;
+            display: inline-block;
+        }
     </style>
 </head>
 
 <body class="font-display bg-background-light dark:bg-background-dark text-vintage-ink dark:text-gray-100 min-h-screen">
     <div class="flex h-screen overflow-hidden">
         <!-- Sidebar Navigation -->
-        <aside class="w-64 border-r border-gray-200 dark:border-gray-800 bg-white dark:bg-background-dark flex flex-col">
+        <aside
+            class="w-64 border-r border-gray-200 dark:border-gray-800 bg-white dark:bg-background-dark flex flex-col">
             <div class="p-6 flex flex-col h-full">
                 <!-- Brand -->
                 <div class="flex items-center gap-3 mb-10">
@@ -70,49 +97,69 @@
                         <span class="material-symbols-outlined text-background-dark">menu_book</span>
                     </div>
                     <div>
-                        <h1 class="text-vintage-ink dark:text-white text-lg font-bold leading-none font-serif italic">Simplon</h1>
-                        <p class="text-gray-500 dark:text-gray-400 text-xs font-medium uppercase tracking-widest mt-1">Pedagogy</p>
+                        <h1 class="brand-shimmer text-lg font-bold leading-none font-serif italic">
+                            SHAIMEURCoders</h1>
+                        <p class="text-gray-500 dark:text-gray-400 text-xs font-medium uppercase tracking-widest mt-1">
+                            Pedagogy</p>
                     </div>
                 </div>
                 <!-- Navigation Links -->
                 <nav class="flex-1 flex flex-col gap-1">
-                    <a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary text-background-dark font-bold shadow-md" href="#">
+                    <a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary text-background-dark font-bold shadow-md"
+                        href="/Formateur">
                         <span class="material-symbols-outlined">dashboard</span>
                         <span class="text-sm">Dashboard</span>
                     </a>
-                    <a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors" href="#">
+                    <a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors"
+                        href="#">
                         <span class="material-symbols-outlined">description</span>
                         <span class="text-sm">Briefs</span>
                     </a>
-                    <a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors" href="#">
+                    <a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors"
+                        href="/Formateur/evaluate">
                         <span class="material-symbols-outlined">forum</span>
                         <span class="text-sm">Debriefing</span>
                     </a>
-                    <a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors" href="#">
+                    <a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors"
+                        href="#">
                         <span class="material-symbols-outlined">trending_up</span>
                         <span class="text-sm">Progress</span>
                     </a>
                     <div class="my-4 border-t border-gray-100 dark:border-gray-800"></div>
-                    <a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors" href="#">
+                    <a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors"
+                        href="/Formateur/addStudent">
+                        <span class="material-symbols-outlined">group_add</span>
+                        <span class="text-sm">Add Student</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors"
+                        href="/Formateur/students">
                         <span class="material-symbols-outlined">group</span>
                         <span class="text-sm">Students</span>
                     </a>
-                    <a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors" href="#">
+                    <a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors"
+                        href="/Formateur/evaluate">
                         <span class="material-symbols-outlined">school</span>
                         <span class="text-sm">Evaluations</span>
                     </a>
                 </nav>
                 <!-- Bottom Actions -->
                 <div class="mt-auto flex flex-col gap-1 pt-4 border-t border-gray-100 dark:border-gray-800">
-                    <a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400" href="#">
+                    <a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400"
+                        href="#">
                         <span class="material-symbols-outlined">settings</span>
                         <span class="text-sm font-medium">Settings</span>
                     </a>
                     <div class="flex items-center gap-3 px-4 py-2 mt-2">
-                        <div class="size-8 rounded-full bg-cover" data-alt="Teacher profile portrait headshot" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCxC2ck1maNlAJUrh7-1iAbTuXvx6CKVK65dYYqBr8T_C9GQqfDsWqMR85uEMQ7a-oLjWEuTcPj1lidPoL72ALuYLkIlFAp8V4y8Vt0gvGKHBiK6zrDV6wx10X2Vawt7eOzWI3pp7RItcCctLtQqlsQGxfAZYjE6Byojk5Ck7DMecozMrSigkU_iVJhRce7Nz1AR1xX6j0fav-aSC3f598ZyWQU-5gsMrpoLSetIrs41sueJ74bD_JVJc3qMn0fyIjphrixZ4BCNJ4');"></div>
+                        <div class="size-8 rounded-full bg-cover" data-alt="Teacher profile portrait headshot"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCxC2ck1maNlAJUrh7-1iAbTuXvx6CKVK65dYYqBr8T_C9GQqfDsWqMR85uEMQ7a-oLjWEuTcPj1lidPoL72ALuYLkIlFAp8V4y8Vt0gvGKHBiK6zrDV6wx10X2Vawt7eOzWI3pp7RItcCctLtQqlsQGxfAZYjE6Byojk5Ck7DMecozMrSigkU_iVJhRce7Nz1AR1xX6j0fav-aSC3f598ZyWQU-5gsMrpoLSetIrs41sueJ74bD_JVJc3qMn0fyIjphrixZ4BCNJ4');">
+                        </div>
                         <div class="overflow-hidden">
-                            <p class="text-sm font-bold truncate">Prof. Higgins</p>
-                            <p class="text-[10px] text-gray-400 uppercase tracking-wider">Teacher</p>
+                            <p class="text-sm font-bold truncate">{{ $_SESSION['user']['first_name'] }}
+                                {{ $_SESSION['user']['last_name'] }}
+                            </p>
+                            <p class="text-[10px] text-gray-400 uppercase tracking-wider">
+                                {{ $_SESSION['user']['role'] }}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -121,10 +168,11 @@
         <!-- Main Content Area -->
         <main class="flex-1 flex flex-col overflow-y-auto notebook-texture ruled-paper">
             <!-- Top Navigation Bar -->
-            <header class="sticky top-0 z-10 flex items-center justify-between px-10 py-4 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+            <header
+                class="sticky top-0 z-10 flex items-center justify-between px-10 py-4 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
                 <div class="flex items-center gap-4">
                     <nav class="flex items-center gap-2 text-sm font-medium">
-                        <a class="text-gray-500 hover:text-primary" href="#">Home</a>
+                        <a class="text-gray-500 hover:text-primary" href="/Formateur">Home</a>
                         <span class="text-gray-300">/</span>
                         <span class="text-vintage-ink dark:text-white">Dashboard</span>
                     </nav>
@@ -134,13 +182,17 @@
                         <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
                             <span class="material-symbols-outlined text-sm">search</span>
                         </span>
-                        <input class="pl-10 pr-4 py-1.5 bg-gray-100 dark:bg-gray-800 border-none rounded-lg text-sm w-64 focus:ring-2 focus:ring-primary transition-all" placeholder="Search students, briefs..." type="text" />
+                        <input
+                            class="pl-10 pr-4 py-1.5 bg-gray-100 dark:bg-gray-800 border-none rounded-lg text-sm w-64 focus:ring-2 focus:ring-primary transition-all"
+                            placeholder="Search students, briefs..." type="text" />
                     </div>
                     <div class="flex items-center gap-3">
-                        <button class="size-10 flex items-center justify-center rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-50">
+                        <button
+                            class="size-10 flex items-center justify-center rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-50">
                             <span class="material-symbols-outlined">notifications</span>
                         </button>
-                        <button class="px-4 py-2 bg-primary text-background-dark font-bold rounded-lg text-sm shadow-sm hover:shadow-md transition-all flex items-center gap-2">
+                        <button
+                            class="px-4 py-2 bg-primary text-background-dark font-bold rounded-lg text-sm shadow-sm hover:shadow-md transition-all flex items-center gap-2">
                             <span class="material-symbols-outlined text-lg">add</span>
                             New Brief
                         </button>
@@ -150,39 +202,50 @@
             <!-- Page Heading -->
             <section class="px-20 py-12">
                 <div class="flex flex-col gap-2 mb-8">
-                    <h2 class="text-5xl font-black font-serif italic tracking-tight dark:text-white">Teacher's Desk Overview</h2>
-                    <p class="text-gray-500 dark:text-gray-400 text-lg max-w-2xl font-serif">Welcome back, Professor Higgins. You have 3 briefs requiring your review and 12 evaluations scheduled for this Friday.</p>
+                    <h2 class="text-5xl font-black font-serif italic tracking-tight dark:text-white">Teacher's Desk
+                        Overview</h2>
+                    <p class="text-gray-500 dark:text-gray-400 text-lg max-w-2xl font-serif">Welcome back,
+                        {{ $_SESSION['user']['first_name'] }}. You have {{ count($briefs) }} briefs requiring your
+                        review and 12 evaluations scheduled for this Friday.
+                    </p>
                 </div>
                 <!-- Stats Summary -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                    <div class="bg-white dark:bg-gray-800/50 p-6 rounded-xl border-2 border-dashed border-ruled-line dark:border-gray-700 shadow-sm">
+                    <div
+                        class="bg-white dark:bg-gray-800/50 p-6 rounded-xl border-2 border-dashed border-ruled-line dark:border-gray-700 shadow-sm">
                         <div class="flex items-center justify-between mb-2">
                             <p class="text-sm font-medium text-gray-500 uppercase tracking-widest">Active Briefs</p>
                             <span class="material-symbols-outlined text-primary">description</span>
                         </div>
                         <div class="flex items-baseline gap-2">
-                            <span class="text-4xl font-black">12</span>
-                            <span class="text-xs font-bold text-green-600 bg-green-100 px-2 py-0.5 rounded-full">+2 this week</span>
+                            <span class="text-4xl font-black"><?= count($briefs) ?></span>
+                            <span
+                                class="text-xs font-bold text-green-600 bg-green-100 px-2 py-0.5 rounded-full">Total</span>
                         </div>
                     </div>
-                    <div class="bg-white dark:bg-gray-800/50 p-6 rounded-xl border-2 border-dashed border-ruled-line dark:border-gray-700 shadow-sm">
+                    <div
+                        class="bg-white dark:bg-gray-800/50 p-6 rounded-xl border-2 border-dashed border-ruled-line dark:border-gray-700 shadow-sm">
                         <div class="flex items-center justify-between mb-2">
-                            <p class="text-sm font-medium text-gray-500 uppercase tracking-widest">Pending Evaluations</p>
-                            <span class="material-symbols-outlined text-amber-500">assignment_late</span>
+                            <p class="text-sm font-medium text-gray-500 uppercase tracking-widest">Enrolled Students
+                            </p>
+                            <span class="material-symbols-outlined text-amber-500">group</span>
                         </div>
                         <div class="flex items-baseline gap-2">
-                            <span class="text-4xl font-black">8</span>
-                            <span class="text-xs font-bold text-amber-600 bg-amber-100 px-2 py-0.5 rounded-full">3 high priority</span>
+                            <span class="text-4xl font-black"><?= count($students) ?></span>
+                            <span
+                                class="text-xs font-bold text-amber-600 bg-amber-100 px-2 py-0.5 rounded-full">Active</span>
                         </div>
                     </div>
-                    <div class="bg-white dark:bg-gray-800/50 p-6 rounded-xl border-2 border-dashed border-ruled-line dark:border-gray-700 shadow-sm">
+                    <div
+                        class="bg-white dark:bg-gray-800/50 p-6 rounded-xl border-2 border-dashed border-ruled-line dark:border-gray-700 shadow-sm">
                         <div class="flex items-center justify-between mb-2">
-                            <p class="text-sm font-medium text-gray-500 uppercase tracking-widest">Avg. Performance</p>
-                            <span class="material-symbols-outlined text-blue-500">show_chart</span>
+                            <p class="text-sm font-medium text-gray-500 uppercase tracking-widest">Active Sprints</p>
+                            <span class="material-symbols-outlined text-blue-500">sprint</span>
                         </div>
                         <div class="flex items-baseline gap-2">
-                            <span class="text-4xl font-black">74%</span>
-                            <span class="text-xs font-bold text-blue-600 bg-blue-100 px-2 py-0.5 rounded-full">↑ 12% vs last month</span>
+                            <span class="text-4xl font-black"><?= count($sprints) ?></span>
+                            <span
+                                class="text-xs font-bold text-blue-600 bg-blue-100 px-2 py-0.5 rounded-full">Current</span>
                         </div>
                     </div>
                 </div>
@@ -193,92 +256,117 @@
                             <span class="material-symbols-outlined">sprint</span>
                             Active Sprints &amp; Projects
                         </h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <!-- Project Card 1 -->
-                            <div class="bg-white dark:bg-gray-800 p-5 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm group hover:border-primary transition-all">
-                                <div class="flex justify-between items-start mb-4">
-                                    <span class="text-[10px] font-bold uppercase tracking-tighter bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">UI Design Fundamentals</span>
-                                    <button class="text-gray-400 hover:text-primary transition-colors">
-                                        <span class="material-symbols-outlined">more_horiz</span>
-                                    </button>
-                                </div>
-                                <h4 class="text-lg font-bold mb-2 group-hover:text-primary transition-colors">Project: Vintage Web App</h4>
-                                <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 line-clamp-2">Students are designing a desktop web application with a skeuomorphic aesthetic.</p>
-                                <div class="space-y-3">
-                                    <div class="flex justify-between text-xs font-medium">
-                                        <span>Progress</span>
-                                        <span>65%</span>
-                                    </div>
-                                    <div class="w-full bg-gray-100 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
-                                        <div class="bg-primary h-full w-[65%] shadow-[0_0_8px_rgba(161,230,25,0.5)]"></div>
-                                    </div>
-                                    <div class="flex -space-x-2 pt-2">
-                                        <img class="size-7 rounded-full border-2 border-white dark:border-gray-800" data-alt="Student profile 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCe_yiO93wTeyZ16nwZKxIMIhHWB7Xb0WLTKFj08dLItLZHDUBHjaC0UpFfv-wbPVasPYru4Tvcjo-wB-jaTzf_C4Dt0Mp7hACvmjonflGhox5DWSWJkWo0Y7ob5_N2_lca4kBY697cf-SIX8DKhw1cxs9p1LhzRamaxP4mprakm5aa0QnpukF-XNjYOn93eurUr_6Cc6qloYh-tGfAUPEP9pDQXMHxEFLDIixjvrcWP3BX0RGGBuVNlfRG__TvKxd471TVde5sMuU" />
-                                        <img class="size-7 rounded-full border-2 border-white dark:border-gray-800" data-alt="Student profile 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD21nJzyVyqaYpP9PSQrPbWAY-SUHY2Am5h2XsqYkLUCjG29snpO8Jl---A_JNUpJZj8BVc4OzTZvmYq65E9i5SpM28XEpfjkqyEN0LNSqvvroKXNZxWpOvq2MebNBPjPfCyNu7BO_oQbKkcn1lK1v9IdOCslYddEKobryEBMIjBEx7NGgMJcZKgWnK8kZPRFubRNXtARBk4GmlA4LwQGQnRmtjamHljuod05cgxaxPwSdmY-I3p7HhirKAHVusWtYora8dGm4nDac" />
-                                        <img class="size-7 rounded-full border-2 border-white dark:border-gray-800" data-alt="Student profile 3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWceR_RTr9mjaW9Gcj2YiK7Sio83kqLDMPHrjhIdnceuUTL9AEBC4ObKSIAcxvAIgLYbG8KR3A4j5whTco7aImWCjltDz-mnRNtrosFQFTxbgJnFGSpQn8s-bNGVVkhsrfWxXxWWr4mqM9oSZ6NYej18BHkiczBGeVKKxQj5-k4TeZHOKAp0SJGSklAEqXMihrPFwvOyeKvaUBNP17uFDm9QPMXxuB-V6H4YR76Gl_oJwdCXmxD9ea2DkWKGbJuH7Upiy67Bg0DyI" />
-                                        <div class="size-7 rounded-full border-2 border-white dark:border-gray-800 bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-[10px] font-bold">+18</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Project Card 2 -->
-                            <div class="bg-white dark:bg-gray-800 p-5 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm group hover:border-primary transition-all">
-                                <div class="flex justify-between items-start mb-4">
-                                    <span class="text-[10px] font-bold uppercase tracking-tighter bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">Backend Engineering</span>
-                                    <button class="text-gray-400 hover:text-primary transition-colors">
-                                        <span class="material-symbols-outlined">more_horiz</span>
-                                    </button>
-                                </div>
-                                <h4 class="text-lg font-bold mb-2 group-hover:text-primary transition-colors">Database Modeling II</h4>
-                                <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 line-clamp-2">Implementing complex relational schemas for pedagogical management systems.</p>
-                                <div class="space-y-3">
-                                    <div class="flex justify-between text-xs font-medium">
-                                        <span>Progress</span>
-                                        <span>22%</span>
-                                    </div>
-                                    <div class="w-full bg-gray-100 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
-                                        <div class="bg-primary h-full w-[22%] shadow-[0_0_8px_rgba(161,230,25,0.5)]"></div>
-                                    </div>
-                                    <div class="flex -space-x-2 pt-2">
-                                        <img class="size-7 rounded-full border-2 border-white dark:border-gray-800" data-alt="Student profile 4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFoNf0nljz51ryhtdqFI9MxRooTG4_-rrK1ned2DKwzRtk1fk-O7ILT8hxyfdAX8ScoSmqO972ZMYMMKdK1K7XSriKUvlQwJzJdITylrHyWDGe7wtZbzso8Us0rvDvenVpnqedAHOegbxG2elxl6RAVr_48l32qjjskQMB_7U1EsnigOlM-0hBqJCUfhhSfLl4OF0Y31nW5LwzcLywbS0fBiJelRxZpqfGEvk44gp0Wld1jzM44q3QuBukEqxcepiMbHCgS_v_K1g" />
-                                        <img class="size-7 rounded-full border-2 border-white dark:border-gray-800" data-alt="Student profile 5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPGpOi0rMUUFe9jP8jd8YQZuvaS-OE0IvYUJKku4PLGFyEQ14PIa7prXqO3CeanXo-_j4_Bo65BqSdz5NeKZOtCSwlJogRUx1dSZh3Bl4trWsjMRlvw5GSmRkubpoHkh66aefDqJFr_gbqfXkXmQ8yUn0QhHykG4KOB4EDHv3vrSZOcwV5pRU1ALAJltnFnHaHtISUtXU3-3cgXXgYVpMQmA7Wug4x8brQA4K9V-ayoWfaC26ZbHkglHgQFlDL8gHM-4aiwoHTlwo" />
-                                        <div class="size-7 rounded-full border-2 border-white dark:border-gray-800 bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-[10px] font-bold">+12</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Recent Activity Section -->
-                        <div class="bg-white dark:bg-gray-800/80 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden mt-10">
-                            <div class="px-6 py-4 border-b border-gray-100 dark:border-gray-700 flex justify-between items-center">
-                                <h3 class="font-bold">Recent Student Activity</h3>
-                                <button class="text-primary text-xs font-bold hover:underline">View All Log</button>
+                        <!-- Student Submissions Section -->
+                        <div
+                            class="bg-white dark:bg-gray-800/80 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden mb-10">
+                            <div
+                                class="px-6 py-4 border-b border-gray-100 dark:border-gray-700 flex justify-between items-center">
+                                <h3 class="font-bold">Recent Student Submissions (Walkthroughs)</h3>
+                                <span
+                                    class="bg-primary/20 text-primary text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-widest">New</span>
                             </div>
                             <div class="divide-y divide-gray-100 dark:divide-gray-800">
-                                <div class="px-6 py-4 flex items-center gap-4 hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors">
-                                    <img class="size-10 rounded-full" data-alt="Student Sarah" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRpeVNRZkz8XZN9dFBIzc6tCMzhI0s3f4nAk0Atvpa5dHeJ9V5ViH_hhS43d1h8GuzXzxtzqbnl88IoYQUjV26fFMjJ0QJczhueO7KQzULhuO-qpF0S5oVettxyTQhcYHCUArVPtduZ1t5K_kIOAGPsxyDYglDtZ0cvZEQcuONUAHRTviaRqjjwVTENJ1rfKQAHeVvZqvpO1xPAACRrFxY_oBiQ_sTNm8Du1I90l3IuFtGnX-G5CRU0q-26m2Z8fu9i2zi0W6evnQ" />
-                                    <div class="flex-1">
-                                        <p class="text-sm font-bold">Sarah Jenkins <span class="font-normal text-gray-500">submitted a draft for</span> "Vintage Web App"</p>
-                                        <p class="text-xs text-gray-400 mt-0.5">24 minutes ago</p>
+                                @foreach ($submissions as $submission)
+                                    <div
+                                        class="px-6 py-4 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors">
+                                        <div class="flex items-center gap-4">
+                                            <div
+                                                class="size-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                                                <span class="material-symbols-outlined">person</span>
+                                            </div>
+                                            <div>
+                                                <p class="text-sm font-bold">{{ $submission['first_name'] }}
+                                                    {{ $submission['last_name'] }}</p>
+                                                <p class="text-xs text-gray-400">Brief: {{ $submission['brief_title'] }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center gap-6 text-right">
+                                            <div>
+                                                <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">
+                                                    Submitted At</p>
+                                                <p class="text-xs font-medium">
+                                                    {{ date('d M Y, H:i', strtotime($submission['created_at'])) }}</p>
+                                            </div>
+                                            <a href="{{ $submission['repository_link'] }}" target="_blank"
+                                                class="px-4 py-2 bg-background-dark text-white text-xs font-bold rounded-lg hover:bg-primary hover:text-background-dark transition-all flex items-center gap-2">
+                                                <span class="material-symbols-outlined text-sm">link</span>
+                                                View Walkthrough
+                                            </a>
+                                        </div>
                                     </div>
-                                    <button class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-xs font-bold rounded-lg hover:bg-primary hover:text-background-dark transition-colors">Review</button>
+                                @endforeach
+                                @if (empty($submissions))
+                                    <div class="px-6 py-8 text-center">
+                                        <span class="material-symbols-outlined text-4xl text-gray-200">history_edu</span>
+                                        <p class="text-sm text-gray-500 italic mt-2">No student submissions found yet.</p>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <?php foreach ($sprints as $sprint): ?>
+                            <div
+                                class="bg-white dark:bg-gray-800 p-5 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm group hover:border-primary transition-all">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span
+                                        class="text-[10px] font-bold uppercase tracking-tighter bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">Sprint</span>
+                                    <button class="text-gray-400 hover:text-primary transition-colors">
+                                        <span class="material-symbols-outlined">more_horiz</span>
+                                    </button>
                                 </div>
-                                <div class="px-6 py-4 flex items-center gap-4 hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors">
-                                    <div class="size-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
-                                        <span class="material-symbols-outlined">chat_bubble</span>
+                                <h4 class="text-lg font-bold mb-2 group-hover:text-primary transition-colors">
+                                    <?= htmlspecialchars($sprint->getName()) ?>
+                                </h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 line-clamp-2">
+                                    <?= htmlspecialchars($sprint->getDescription()) ?>
+                                </p>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between text-xs font-medium">
+                                        <span>Duration</span>
+                                        <span><?= htmlspecialchars($sprint->getStartDate()) ?> -
+                                            <?= htmlspecialchars($sprint->getEndDate()) ?></span>
+                                    </div>
+                                    <div class="w-full bg-gray-100 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                                        <div class="bg-primary h-full w-[100%] shadow-[0_0_8px_rgba(161,230,25,0.5)]">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php endforeach; ?>
+                            <?php if (empty($sprints)): ?>
+                            <p class="text-gray-500 italic col-span-2">No active sprints found.</p>
+                            <?php endif; ?>
+                        </div>
+                        <!-- Recent Activity Section -->
+                        <div
+                            class="bg-white dark:bg-gray-800/80 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden mt-10">
+                            <div
+                                class="px-6 py-4 border-b border-gray-100 dark:border-gray-700 flex justify-between items-center">
+                                <h3 class="font-bold">Active Briefs</h3>
+                                <button class="text-primary text-xs font-bold hover:underline">View All</button>
+                            </div>
+                            <div class="divide-y divide-gray-100 dark:divide-gray-800">
+                                <?php foreach ($briefs as $brief): ?>
+                                <div
+                                    class="px-6 py-4 flex items-center gap-4 hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors">
+                                    <div
+                                        class="size-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                                        <span class="material-symbols-outlined">description</span>
                                     </div>
                                     <div class="flex-1">
-                                        <p class="text-sm font-bold">Marcus Thorne <span class="font-normal text-gray-500">asked a question on</span> "Database Modeling II"</p>
-                                        <p class="text-xs text-gray-400 mt-0.5">1 hour ago</p>
+                                        <p class="text-sm font-bold"><?= htmlspecialchars($brief->getTitle()) ?></p>
+                                        <p class="text-xs text-gray-400 mt-0.5">Due:
+                                            <?= htmlspecialchars($brief->getEndDate()) ?>
+                                        </p>
                                     </div>
-                                    <button class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-xs font-bold rounded-lg hover:bg-primary hover:text-background-dark transition-colors">Reply</button>
+                                    <a href="/Formateur/evaluate"
+                                        class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-xs font-bold rounded-lg hover:bg-primary hover:text-background-dark transition-colors">Evaluate</a>
                                 </div>
-                                <div class="px-6 py-4 flex items-center gap-4 hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors">
-                                    <img class="size-10 rounded-full" data-alt="Student David" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCU0A_XazrDv5PtWKx9-JS5qcnbBo0j1knJLJcglGqPT7ZptgHj7VLzpg26b9rXkX_HxAexwR5DXcqjNtrrfTIOlHH16NoHPTrxxp2_j-koPY0AHQPhvI2svaKunHiosrgzOJ-xVjnrKHUo0A-vCpVbU0sjffYrLsUx-2B2SAoa70otoyWrAxagtpPxC_Kix904NyTE8ZxicS68mb518zUcsurCe9OmchmZ9ZxiHVkoadfJo6Tc4bOJgQYWtdtLnZ9ybgZkuLkiqdw" />
-                                    <div class="flex-1">
-                                        <p class="text-sm font-bold">David Miller <span class="font-normal text-gray-500">completed the quiz</span> "User Psychology Basics"</p>
-                                        <p class="text-xs text-gray-400 mt-0.5">3 hours ago</p>
-                                    </div>
-                                    <div class="text-green-500 font-bold text-sm">92% Score</div>
-                                </div>
+                                <?php endforeach; ?>
+                                <?php if (empty($briefs)): ?>
+                                <div class="px-6 py-4 text-sm text-gray-500 italic">No active briefs.</div>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -293,28 +381,34 @@
                             </h3>
                             <div class="space-y-4">
                                 <div class="border-l-2 border-primary pl-4 py-1">
-                                    <p class="text-[10px] text-primary font-bold uppercase tracking-widest">Friday, Oct 24</p>
+                                    <p class="text-[10px] text-primary font-bold uppercase tracking-widest">Friday, Oct
+                                        24</p>
                                     <p class="text-sm font-bold">Final Brief Review: Design</p>
                                     <p class="text-xs text-gray-400">09:00 AM - 12:00 PM</p>
                                 </div>
                                 <div class="border-l-2 border-gray-600 pl-4 py-1">
-                                    <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Monday, Oct 27</p>
+                                    <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Monday, Oct
+                                        27</p>
                                     <p class="text-sm font-bold">Database Oral Assessment</p>
                                     <p class="text-xs text-gray-400">02:00 PM - 05:30 PM</p>
                                 </div>
                                 <div class="border-l-2 border-gray-600 pl-4 py-1">
-                                    <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Tuesday, Oct 28</p>
+                                    <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Tuesday,
+                                        Oct 28</p>
                                     <p class="text-sm font-bold">Middle-term Peer Review</p>
                                     <p class="text-xs text-gray-400">All Day</p>
                                 </div>
                             </div>
-                            <button class="w-full mt-6 py-2 border border-primary/30 rounded-lg text-primary text-xs font-bold hover:bg-primary/10 transition-colors">
+                            <button
+                                class="w-full mt-6 py-2 border border-primary/30 rounded-lg text-primary text-xs font-bold hover:bg-primary/10 transition-colors">
                                 View Full Calendar
                             </button>
                         </div>
                         <!-- Sticky Notes Area -->
-                        <div class="bg-yellow-50 dark:bg-yellow-900/10 p-5 rounded-lg border border-yellow-200 dark:border-yellow-900/30 transform rotate-1 shadow-md">
-                            <h4 class="text-xs font-black uppercase tracking-widest text-yellow-800 dark:text-yellow-200 mb-3 flex items-center gap-2">
+                        <div
+                            class="bg-yellow-50 dark:bg-yellow-900/10 p-5 rounded-lg border border-yellow-200 dark:border-yellow-900/30 transform rotate-1 shadow-md">
+                            <h4
+                                class="text-xs font-black uppercase tracking-widest text-yellow-800 dark:text-yellow-200 mb-3 flex items-center gap-2">
                                 <span class="material-symbols-outlined text-sm">push_pin</span>
                                 Teacher Notes
                             </h4>
@@ -334,10 +428,13 @@
                             </ul>
                         </div>
                         <!-- Teacher's Performance Index -->
-                        <div class="bg-white dark:bg-gray-800 p-5 rounded-lg border border-gray-200 dark:border-gray-700">
-                            <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Class Engagement</h4>
+                        <div
+                            class="bg-white dark:bg-gray-800 p-5 rounded-lg border border-gray-200 dark:border-gray-700">
+                            <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Class Engagement
+                            </h4>
                             <div class="flex items-center gap-4">
-                                <div class="size-16 rounded-full border-4 border-primary border-t-transparent flex items-center justify-center">
+                                <div
+                                    class="size-16 rounded-full border-4 border-primary border-t-transparent flex items-center justify-center">
                                     <span class="text-lg font-black italic">89</span>
                                 </div>
                                 <div>
@@ -350,7 +447,8 @@
                 </div>
             </section>
             <!-- Bottom Margin Line Decoration -->
-            <div class="mt-auto h-20 border-t-2 border-margin-line dark:border-gray-800 pointer-events-none opacity-50"></div>
+            <div class="mt-auto h-20 border-t-2 border-margin-line dark:border-gray-800 pointer-events-none opacity-50">
+            </div>
         </main>
     </div>
 </body>
