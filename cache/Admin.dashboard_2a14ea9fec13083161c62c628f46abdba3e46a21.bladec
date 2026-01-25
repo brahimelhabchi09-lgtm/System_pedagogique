@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+ <meta charset="utf-8" />
+ <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+ <title>SHAIMEURCoders Admin Dashboard</title>
+ <!-- Google Fonts -->
+ <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet" />
+ <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap"
+ rel="stylesheet" />
+ <link
+ href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+ rel="stylesheet" />
+ <!-- Tailwind CSS -->
+ <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+ <script id="tailwind-config">
+ tailwind.config = {
+ darkMode: "class",
+ theme: {
+ extend: {
+ colors: {
+ "primary": "#a1e619",
+ "background-light": "#fdfdfb",
+ "background-dark": "#1c2111",
+ "paper-border": "#dcded4",
+ "academic-blue": "#7a98a6",
+ "academic-olive": "#5b6b3e",
+ },
+ fontFamily: {
+ "display": ["Lexend", "sans-serif"]
+ },
+ borderRadius: {
+ "DEFAULT": "0.25rem",
+ "lg": "0.5rem",
+ "xl": "0.75rem",
+ "full": "9999px"
+ },
+ },
+ },
+ }
+ </script>
+ <style>
+ .paper-texture {
+ background-color: #fdfdfb;
+ background-image: radial-gradient(#d1d5db 0.5px, transparent 0.5px);
+ background-size: 20px 20px;
+ }
+
+ .index-card-ruled {
+ background-image: repeating-linear-gradient(transparent, transparent 31px, #e5e7eb 31px, #e5e7eb 32px);
+ background-attachment: local;
+ }
+
+ @keyframes shimmer {
+ 0% {
+ background-position: -200% 0;
+ }
+
+ 100% {
+ background-position: 200% 0;
+ }
+ }
+
+ .brand-shimmer {
+ background: linear-gradient(90deg, #5b6b3e 0%, #a1e619 25%, #5b6b3e 50%, #a1e619 75%, #5b6b3e 100%);
+ background-size: 200% auto;
+ color: transparent;
+ -webkit-background-clip: text;
+ background-clip: text;
+ animation: shimmer 5s infinite linear;
+ display: inline-block;
+ }
+ </style>
+</head>
+
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 paper-texture">
+ <div class="flex h-screen flex-col">
+ <!-- Top Navigation Bar -->
+ <header
+ class="flex items-center justify-between border-b border-paper-border bg-white/80 backdrop-blur-md px-8 py-3 dark:bg-background-dark dark:border-slate-800">
+ <div class="flex items-center gap-8">
+ <div class="flex items-center gap-3">
+ <div class="flex items-center justify-center size-10 bg-primary rounded-lg text-background-dark">
+ <span class="material-symbols-outlined text-2xl font-bold">school</span>
+ </div>
+ <h2 class="text-2xl font-black leading-tight tracking-tight brand-shimmer">
+ SHAIMEURCoders</h2>
+ </div>
+ <nav class="hidden md:flex items-center gap-6">
+ <a class="text-sm font-semibold text-academic-olive border-b-2 border-primary pb-1"
+ href="/admin">Dashboard</a>
+ <a class="text-sm font-medium text-slate-500 hover:text-academic-olive transition-colors"
+ href="#">Curriculum</a>
+ <a class="text-sm font-medium text-slate-500 hover:text-academic-olive transition-colors"
+ href="/admin/addFormateur">Staff</a>
+ </nav>
+ </div>
+ <div class="flex items-center gap-6">
+ <div class="relative hidden sm:block">
+ <span
+ class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+ <input
+ class="w-64 rounded-full border-paper-border bg-slate-50 py-2 pl-10 pr-4 text-sm focus:border-primary focus:ring-0 dark:bg-slate-800 dark:border-slate-700"
+ placeholder="Archive search..." type="text" />
+ </div>
+ <div class="flex items-center gap-3">
+ <div class="text-right hidden lg:block">
+ <p class="text-xs font-bold text-slate-900 dark:text-white leading-none">
+ <?php echo \htmlentities($_SESSION['user']['first_name']??'', ENT_QUOTES, 'UTF-8', false); ?> <?php echo \htmlentities($_SESSION['user']['last_name']??'', ENT_QUOTES, 'UTF-8', false); ?></p>
+ <p class="text-[10px] uppercase tracking-wider text-slate-500"><?php echo \htmlentities($_SESSION['user']['role']??'', ENT_QUOTES, 'UTF-8', false); ?>
+
+ </p>
+ </div>
+ <div class="size-10 rounded-full border-2 border-primary bg-cover bg-center"
+ data-alt="Close up portrait of a male administrator"
+ style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCRXKphd9BLmhCwF3OvXGX7Kp7zv1Rm1Kk79h3PhsKFmjSBnbfEzhSe9Z2DEg1fCvKfIGXkxLszU6pWG9RHKmYOEr47kN5IjSgcpSHeTBjxNSp_2WFa4rbJv32xAysvISLmaWdeasCSDgPMYOeQT0lf_fVv842DosvL7kMgMS1oyI9Y2_nAes11txJwyi7OaddlveVXkmkUBKPzx-wIlAOGVD_Tb-jm6m_OVh0LpZVN7IU4nW2bnXGxkoWjq-y3U1oJIoqYYnlf-0Y')">
+ </div>
+ </div>
+ </div>
+ </header>
+ <div class="flex flex-1 overflow-hidden">
+ <!-- Side Navigation Bar -->
+ <aside
+ class="w-64 border-r border-paper-border bg-white dark:bg-background-dark dark:border-slate-800 p-6 flex flex-col gap-8">
+ <div>
+ <h3 class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-4">Academic Records
+ </h3>
+ <div class="flex flex-col gap-1">
+ <a class="flex items-center gap-3 rounded-lg bg-primary/10 px-4 py-2.5 text-academic-olive transition-all"
+ href="/admin/classes">
+ <span class="material-symbols-outlined text-xl">meeting_room</span>
+ <span class="text-sm font-bold">Classes</span>
+ </a>
+ <a class="flex items-center gap-3 rounded-lg px-4 py-2.5 text-slate-500 hover:bg-slate-50 hover:text-academic-olive transition-all dark:hover:bg-slate-800"
+ href="/admin/createSprint">
+ <span class="material-symbols-outlined text-xl">bolt</span>
+ <span class="text-sm font-medium">Sprints</span>
+ </a>
+ <a class="flex items-center gap-3 rounded-lg px-4 py-2.5 text-slate-500 hover:bg-slate-50 hover:text-academic-olive transition-all dark:hover:bg-slate-800"
+ href="/admin/skills">
+ <span class="material-symbols-outlined text-xl">military_tech</span>
+ <span class="text-sm font-medium">Skills</span>
+ </a>
+ <a class="flex items-center gap-3 rounded-lg px-4 py-2.5 text-slate-500 hover:bg-slate-50 hover:text-academic-olive transition-all dark:hover:bg-slate-800"
+ href="/admin/addBrief">
+ <span class="material-symbols-outlined text-xl">description</span>
+ <span class="text-sm font-medium">Briefs</span>
+ </a>
+ </div>
+ </div>
+ <div>
+ <h3 class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-4">Registry</h3>
+ <div class="flex flex-col gap-1">
+ <a class="flex items-center gap-3 rounded-lg px-4 py-2.5 text-slate-500 hover:bg-slate-50 transition-all dark:hover:bg-slate-800"
+ href="#">
+ <span class="material-symbols-outlined text-xl">group</span>
+ <span class="text-sm font-medium">Students</span>
+ </a>
+ <a class="flex items-center gap-3 rounded-lg px-4 py-2.5 text-slate-500 hover:bg-slate-50 transition-all dark:hover:bg-slate-800"
+ href="#">
+ <span class="material-symbols-outlined text-xl">settings</span>
+ <span class="text-sm font-medium">System Settings</span>
+ </a>
+ </div>
+ </div>
+ <div class="mt-auto p-4 bg-academic-blue/5 rounded-xl border border-academic-blue/20">
+ <p class="text-xs font-medium text-academic-blue mb-2 italic">Pedagogical Tip:</p>
+ <p class="text-[11px] leading-relaxed text-slate-600 dark:text-slate-400">Regularly review sprint
+ velocity to ensure consistent learning pacing across active cohorts.</p>
+ </div>
+ </aside>
+ <!-- Main Content Area -->
+ <main class="flex-1 overflow-y-auto p-8">
+ <!-- Page Heading -->
+ <div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+ <div class="flex flex-col gap-1">
+ <h1 class="text-4xl font-black tracking-tight text-academic-olive dark:text-white">Admin
+ Dashboard Overview</h1>
+ <p class="text-sm font-medium text-academic-blue flex items-center gap-2 italic">
+ <span class="material-symbols-outlined text-base">calendar_today</span>
+ <?= date('l, F jS, Y') ?>
+ </p>
+ </div>
+ <button
+ class="flex items-center gap-2 rounded-lg bg-primary px-6 py-2.5 text-sm font-black text-background-dark shadow-lg shadow-primary/20 hover:shadow-xl hover:-translate-y-0.5 transition-all">
+ <span class="material-symbols-outlined">add_circle</span>
+ NEW BRIEF
+ </button>
+ </div>
+ <!-- Stats: Index Card Style -->
+ <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+ <!-- Card 1: Sprints -->
+ <div
+ class="group relative bg-white dark:bg-slate-900 border-l-4 border-l-primary border border-paper-border p-6 shadow-sm hover:shadow-md transition-shadow index-card-ruled">
+ <div class="flex justify-between items-start mb-4">
+ <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">SPRINTS</p>
+ <span
+ class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">folder_open</span>
+ </div>
+ <p class="text-sm font-bold text-academic-olive dark:text-slate-300">Total Sprints</p>
+ <div class="flex items-baseline gap-2 mt-1">
+ <p class="text-4xl font-black tracking-tighter text-slate-900 dark:text-white">
+ <?php echo \htmlentities(count($sprints)??'', ENT_QUOTES, 'UTF-8', false); ?>
+
+ </p>
+ </div>
+ <p class="mt-4 text-[10px] italic text-slate-400">Active pedagogical cycles</p>
+ </div>
+ <!-- Card 2: Students -->
+ <div
+ class="group relative bg-white dark:bg-slate-900 border-l-4 border-l-academic-blue border border-paper-border p-6 shadow-sm hover:shadow-md transition-shadow index-card-ruled">
+ <div class="flex justify-between items-start mb-4">
+ <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">STUDENTS</p>
+ <span
+ class="material-symbols-outlined text-academic-blue group-hover:scale-110 transition-transform">group</span>
+ </div>
+ <p class="text-sm font-bold text-academic-olive dark:text-slate-300">Enrolled Students</p>
+ <div class="flex items-baseline gap-2 mt-1">
+ <p class="text-4xl font-black tracking-tighter text-slate-900 dark:text-white">
+ <?php echo \htmlentities(count($students)??'', ENT_QUOTES, 'UTF-8', false); ?>
+
+ </p>
+ </div>
+ <p class="mt-4 text-[10px] italic text-slate-400">Registered learners</p>
+ </div>
+ <!-- Card 3: Teachers -->
+ <div
+ class="group relative bg-white dark:bg-slate-900 border-l-4 border-l-orange-300 border border-paper-border p-6 shadow-sm hover:shadow-md transition-shadow index-card-ruled">
+ <div class="flex justify-between items-start mb-4">
+ <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">TEACHERS</p>
+ <span
+ class="material-symbols-outlined text-orange-400 group-hover:scale-110 transition-transform">badge</span>
+ </div>
+ <p class="text-sm font-bold text-academic-olive dark:text-slate-300">Active Teachers</p>
+ <div class="flex items-baseline gap-2 mt-1">
+ <p class="text-4xl font-black tracking-tighter text-slate-900 dark:text-white">
+ <?php echo \htmlentities(count($teachers)??'', ENT_QUOTES, 'UTF-8', false); ?>
+
+ </p>
+ </div>
+ <p class="mt-4 text-[10px] italic text-slate-400">Qualified instructors</p>
+ </div>
+ </div>
+
+ <!-- Data Listings -->
+ <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+ <!-- Students List -->
+ <div
+ class="bg-white dark:bg-slate-900 border border-paper-border rounded-xl shadow-sm overflow-hidden">
+ <div
+ class="border-b border-paper-border bg-slate-50 dark:bg-slate-800/50 px-6 py-4 flex justify-between items-center">
+ <h2 class="text-lg font-black text-academic-olive dark:text-white uppercase tracking-tight">
+ Recent Students</h2>
+ </div>
+ <div class="divide-y divide-paper-border dark:divide-slate-800">
+ <?php $__currentLoopData = $students; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $student): $loop = $this->incrementLoopIndices();  ?>
+ <div
+ class="px-6 py-4 flex items-center justify-between hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+ <div class="flex items-center gap-4">
+ <div
+ class="size-10 rounded bg-academic-blue/10 flex items-center justify-center text-academic-blue">
+ <span class="material-symbols-outlined">person</span>
+ </div>
+ <div>
+ <p class="text-sm font-bold text-slate-900 dark:text-white">
+ <?php echo \htmlentities($student->getFirstName()??'', ENT_QUOTES, 'UTF-8', false); ?> <?php echo \htmlentities($student->getLastName()??'', ENT_QUOTES, 'UTF-8', false); ?>
+
+ </p>
+ <p class="text-xs text-slate-500"><?php echo \htmlentities($student->getEmail()??'', ENT_QUOTES, 'UTF-8', false); ?></p>
+ </div>
+ </div>
+ </div>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ <?php if(empty($students)): ?>
+ <div class="px-6 py-4 text-sm text-slate-500 italic">No students found.</div>
+ <?php endif; ?>
+ </div>
+ </div>
+
+ <!-- Teachers List -->
+ <div
+ class="bg-white dark:bg-slate-900 border border-paper-border rounded-xl shadow-sm overflow-hidden">
+ <div
+ class="border-b border-paper-border bg-slate-50 dark:bg-slate-800/50 px-6 py-4 flex justify-between items-center">
+ <h2 class="text-lg font-black text-academic-olive dark:text-white uppercase tracking-tight">
+ Recent Teachers</h2>
+ </div>
+ <div class="divide-y divide-paper-border dark:divide-slate-800">
+ <?php $__currentLoopData = $teachers; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $teacher): $loop = $this->incrementLoopIndices();  ?>
+ <div
+ class="px-6 py-4 flex items-center justify-between hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+ <div class="flex items-center gap-4">
+ <div
+ class="size-10 rounded bg-orange-100 flex items-center justify-center text-orange-700">
+ <span class="material-symbols-outlined">school</span>
+ </div>
+ <div>
+ <p class="text-sm font-bold text-slate-900 dark:text-white">
+ <?php echo \htmlentities($teacher->getFirstName()??'', ENT_QUOTES, 'UTF-8', false); ?> <?php echo \htmlentities($teacher->getLastName()??'', ENT_QUOTES, 'UTF-8', false); ?>
+
+ </p>
+ <p class="text-xs text-slate-500"><?php echo \htmlentities($teacher->getEmail()??'', ENT_QUOTES, 'UTF-8', false); ?></p>
+ </div>
+ </div>
+ </div>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ <?php if(empty($teachers)): ?>
+ <div class="px-6 py-4 text-sm text-slate-500 italic">No teachers found.</div>
+ <?php endif; ?>
+ </div>
+ </div>
+ </div>
+
+ <!-- Sprints List (Full Width) -->
+ <div
+ class="mt-8 bg-white dark:bg-slate-900 border border-paper-border rounded-xl shadow-sm overflow-hidden">
+ <div
+ class="border-b border-paper-border bg-slate-50 dark:bg-slate-800/50 px-6 py-4 flex justify-between items-center">
+ <h2 class="text-lg font-black text-academic-olive dark:text-white uppercase tracking-tight">
+ Active Sprints</h2>
+ </div>
+ <div class="divide-y divide-paper-border dark:divide-slate-800">
+ <?php $__currentLoopData = $sprints; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $sprint): $loop = $this->incrementLoopIndices();  ?>
+ <div
+ class="px-6 py-4 flex items-center justify-between hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+ <div class="flex items-center gap-4">
+ <div
+ class="size-10 rounded bg-primary/10 flex items-center justify-center text-primary">
+ <span class="material-symbols-outlined">sprint</span>
+ </div>
+ <div>
+ <p class="text-sm font-bold text-slate-900 dark:text-white">
+ <?php echo \htmlentities($sprint->getName()??'', ENT_QUOTES, 'UTF-8', false); ?>
+
+ </p>
+ <p class="text-xs text-slate-500"><?php echo \htmlentities($sprint->getDescription()??'', ENT_QUOTES, 'UTF-8', false); ?></p>
+ </div>
+ </div>
+ <div class="text-right">
+ <p class="text-xs font-medium text-slate-400"><?php echo \htmlentities($sprint->getStartDate()??'', ENT_QUOTES, 'UTF-8', false); ?> -
+ <?php echo \htmlentities($sprint->getEndDate()??'', ENT_QUOTES, 'UTF-8', false); ?>
+
+ </p>
+ </div>
+ </div>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ <?php if(empty($sprints)): ?>
+ <div class="px-6 py-4 text-sm text-slate-500 italic">No sprints found.</div>
+ <?php endif; ?>
+ </div>
+ </div>
+ <!-- Bottom Decorative Divider -->
+ <div class="mt-12 opacity-30 pointer-events-none">
+ <div class="h-px bg-gradient-to-r from-transparent via-academic-olive to-transparent w-full"></div>
+ <p class="text-center text-[10px] mt-2 font-black uppercase tracking-[0.5em] text-academic-olive">
+ SHAIMEURCoders Academic Management System v.2.4.0</p>
+ </div>
+ </main>
+ </div>
+ </div>
+</body>
+
+</html>

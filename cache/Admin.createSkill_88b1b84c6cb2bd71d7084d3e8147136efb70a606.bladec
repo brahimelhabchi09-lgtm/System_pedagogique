@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Create Skill</title>
+ <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 p-8">
+ <div class="max-w-md mx-auto bg-white p-8 rounded shadow">
+ <h2 class="text-2xl font-bold mb-6">Define New Skill</h2>
+ <form action="/admin/submitSkill" method="POST">
+ <div class="mb-4">
+ <label class="block text-gray-700 text-sm font-bold mb-2">Skill Code</label>
+ <input type="text" name="code"
+ class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+ required placeholder="C1, C2...">
+ </div>
+
+ <div class="mb-4">
+ <label class="block text-gray-700 text-sm font-bold mb-2">Title</label>
+ <input type="text" name="title"
+ class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+ required placeholder="e.g. Design Relational Database">
+ </div>
+
+ <div class="mb-4">
+ <label class="block text-gray-700 text-sm font-bold mb-2">Description</label>
+ <textarea name="description"
+ class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+ rows="3"></textarea>
+ </div>
+
+ <div class="mb-4">
+ <label class="block text-gray-700 text-sm font-bold mb-2">Target Level</label>
+ <select name="level"
+ class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+ <option value="IMITER">IMITER</option>
+ <option value="S_ADAPTER">S_ADAPTER</option>
+ <option value="TRANSPOSER">TRANSPOSER</option>
+ </select>
+ </div>
+
+ <div class="mb-6">
+ <label class="block text-gray-700 text-sm font-bold mb-2">Link to Brief (Optional)</label>
+ <select name="brief_id"
+ class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+ <option value="">-- General Skill --</option>
+ <?php foreach ($briefs as $brief): ?>
+ <option value="<?= $brief->getId() ?>"><?= htmlspecialchars($brief->getTitle()) ?></option>
+ <?php endforeach; ?>
+ </select>
+ </div>
+
+ <div class="flex items-center justify-between">
+ <button type="button" onclick="window.history.back()"
+ class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+ Cancel
+ </button>
+ <button type="submit"
+ class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+ Save Skill
+ </button>
+ </div>
+ </form>
+ </div>
+</body>
+
+</html>

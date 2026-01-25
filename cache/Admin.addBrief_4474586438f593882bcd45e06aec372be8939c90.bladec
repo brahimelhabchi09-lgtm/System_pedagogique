@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Add Brief</title>
+ <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 p-8">
+ <div class="max-w-2xl mx-auto bg-white p-8 rounded shadow">
+ <h2 class="text-2xl font-bold mb-6">Create New Brief</h2>
+ <form action="/admin/submitBrief" method="POST">
+ <input type="hidden" name="author_id" value="1"> <!-- Placeholder ID -->
+
+ <div class="mb-4">
+ <label class="block text-gray-700 text-sm font-bold mb-2">Title</label>
+ <input type="text" name="title"
+ class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+ required>
+ </div>
+
+ <div class="mb-4">
+ <label class="block text-gray-700 text-sm font-bold mb-2">Description</label>
+ <textarea name="description"
+ class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+ rows="4"></textarea>
+ </div>
+
+ <div class="flex gap-4 mb-4">
+ <div class="w-1/2">
+ <label class="block text-gray-700 text-sm font-bold mb-2">Start Date</label>
+ <input type="date" name="start_date"
+ class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+ required>
+ </div>
+ <div class="w-1/2">
+ <label class="block text-gray-700 text-sm font-bold mb-2">End Date</label>
+ <input type="date" name="end_date"
+ class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+ required>
+ </div>
+ </div>
+
+ <div class="mb-6">
+ <label class="block text-gray-700 text-sm font-bold mb-2">Sprint</label>
+ <select name="sprint_id"
+ class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+ <?php foreach ($sprints as $sprint): ?>
+ <option value="<?= $sprint->getId() ?>"><?= htmlspecialchars($sprint->getName()) ?></option>
+ <?php endforeach; ?>
+ </select>
+ </div>
+
+ <div class="flex items-center justify-between">
+ <button type="button" onclick="window.history.back()"
+ class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+ Cancel
+ </button>
+ <button type="submit"
+ class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+ Create Brief
+ </button>
+ </div>
+ </form>
+ </div>
+</body>
+
+</html>
