@@ -1,108 +1,135 @@
-
-CREATE DATABASE pedagogical_management;
-
-
 CREATE TYPE user_role AS ENUM ('ADMIN', 'TEACHER', 'STUDENT');
 
-CREATE TYPE brief_type AS ENUM ('INDIVIDUAL', 'COLLECTIVE');
+CREATE TYPE formation AS ENUM ('TRONC_COMMUN', 'JAVA', 'JAVASCRIPT', 'AI');
 
-CREATE TYPE skill_level AS ENUM ('IMITER', 'S_ADAPTER', 'TRANSPOSER');
+CREATE TYPE grade_enum AS ENUM ('A1', 'A2');
+
+CREATE TYPE brief_type AS ENUM ('INDIVIDUEL', 'COLLECTIF');
+
+CREATE TYPE level_enum AS ENUM ('IMITER', 'S_ADAPTER', 'TRANSPOSER');
+
+CREATE TYPE niveau_enum AS ENUM ('FAIBLE', 'MOYENNE', 'TRES_BIEN');
 
 CREATE TABLE users (
-    id SERIAL PRIMARY KEY,
-    first_name VARCHAR(100) NOT NULL,
-    last_name VARCHAR(100) NOT NULL,
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    first_name VARCHAR(100),
+    last_name VARCHAR(100),
     age INT,
     email VARCHAR(150) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL,
+    phone VARCHAR(30),
+    password TEXT NOT NULL,
     role user_role NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT now(),
     updated_at TIMESTAMP,
     deleted_at TIMESTAMP
 );
 
-CREATE TABLE classes (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
+
+CREATE TABLE admins (
+    id UUID PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE teachers (
+    id UUID PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE students (
+    id UUID PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE class (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    name VARCHAR(100),
     image_url TEXT,
-    student_count INT DEFAULT 0,
-    teacher_id INT REFERENCES users(id),
-    grade VARCHAR(10),
+    student_count INT,
+    created_at TIMESTAMP DEFAULT now(),
+    updated_at TIMESTAMP,
+    deleted_at TIMESTAMP,
+    formation formation,
+    grade grade_enum,
     school_year VARCHAR(20),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP,
-    deleted_at TIMESTAMP
+    teacher_id UUID REFERENCES teachers(id)
 );
 
-ALTER TABLE users
-ADD COLUMN class_id INT REFERENCES classes(id);
 
-CREATE TABLE sprints (
-    id SERIAL PRIMARY KEY,
-    class_id INT NOT NULL REFERENCES classes(id) ON DELETE CASCADE,
-    name VARCHAR(100) NOT NULL,
+CREATE TABLE sprint (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    name VARCHAR(100),
     description TEXT,
-    start_date DATE,
-    end_date DATE,
-    sprint_order INT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    start_date TIMESTAMP,
+    end_date TIMESTAMP,
+    created_at TIMESTAMP DEFAULT now(),
     updated_at TIMESTAMP,
     deleted_at TIMESTAMP
 );
 
-CREATE TABLE briefs (
-    id SERIAL PRIMARY KEY,
-    sprint_id INT NOT NULL REFERENCES sprints(id) ON DELETE CASCADE,
-    title VARCHAR(150) NOT NULL,
+
+CREATE TABLE brief (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    title VARCHAR(150),
     description TEXT,
     content TEXT,
-    brief_type brief_type NOT NULL,
-    start_date DATE,
-    end_date DATE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    start_date TIMESTAMP,
+    end_date TIMESTAMP,
+    type brief_type,
+    created_at TIMESTAMP DEFAULT now(),
     updated_at TIMESTAMP,
-    deleted_at TIMESTAMP
+    deleted_at TIMESTAMP,
+    sprint_id UUID REFERENCES sprint(id)
 );
 
-CREATE TABLE skills (
-    id SERIAL PRIMARY KEY,
-    code VARCHAR(10) UNIQUE NOT NULL,
-    title VARCHAR(150) NOT NULL,
+
+CREATE TABLE skill (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    code VARCHAR(50),
+    title VARCHAR(150),
     description TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    level level_enum,
+    niveau niveau_enum,
+    created_at TIMESTAMP DEFAULT now(),
     updated_at TIMESTAMP,
-    deleted_at TIMESTAMP
+    deleted_at TIMESTAMP,
+    brief_id UUID REFERENCES brief(id)
 );
 
-CREATE TABLE brief_skill (
-    brief_id INT REFERENCES briefs(id) ON DELETE CASCADE,
-    skill_id INT REFERENCES skills(id) ON DELETE CASCADE,
-    PRIMARY KEY (brief_id, skill_id)
-);
 
-CREATE TABLE submissions (
-    id SERIAL PRIMARY KEY,
-    brief_id INT REFERENCES briefs(id) ON DELETE CASCADE,
-    student_id INT REFERENCES users(id) ON DELETE CASCADE,
+CREATE TABLE submission (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     message TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT now(),
     updated_at TIMESTAMP,
-    deleted_at TIMESTAMP
+    deleted_at TIMESTAMP,
+    student_id UUID REFERENCES students(id),
+    brief_id UUID REFERENCES brief(id)
 );
 
-CREATE TABLE debriefings (
-    id SERIAL PRIMARY KEY,
-    student_id INT REFERENCES users(id) ON DELETE CASCADE,
-    teacher_id INT REFERENCES users(id),
-    brief_id INT REFERENCES briefs(id),
-    skill_id INT REFERENCES skills(id),
-    level skill_level NOT NULL,
-    comment TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+CREATE TABLE link (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    link TEXT,
+    created_at TIMESTAMP DEFAULT now(),
+    updated_at TIMESTAMP,
+    deleted_at TIMESTAMP,
+    brief_id UUID REFERENCES brief(id)
 );
 
-CREATE INDEX idx_users_role ON users(role);
-CREATE INDEX idx_sprints_class ON sprints(class_id);
-CREATE INDEX idx_briefs_sprint ON briefs(sprint_id);
-CREATE INDEX idx_debriefings_student ON debriefings(student_id);
-CREATE INDEX idx_debriefings_brief ON debriefings(brief_id);
+
+CREATE TABLE class_students (
+    class_id UUID REFERENCES class(id) ON DELETE CASCADE,
+    student_id UUID REFERENCES students(id) ON DELETE CASCADE,
+    PRIMARY KEY (class_id, student_id)
+);
+
+
+CREATE TABLE sprint_students (
+    sprint_id UUID REFERENCES sprint(id) ON DELETE CASCADE,
+    student_id UUID REFERENCES students(id) ON DELETE CASCADE,
+    PRIMARY KEY (sprint_id, student_id)
+);
+
+
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
