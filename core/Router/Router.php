@@ -11,16 +11,18 @@ class Router
 
     }
 
-    public function get(string $uri, string $action, array $middleware = []){
+    public function get(string $uri, string $action, array $middleware = [])
+    {
         $this->routes['GET'][$uri] = ['action' => $action, 'middleware' => $middleware];
     }
 
-    public function post(string $uri, string $action, array $middleware = []){
+    public function post(string $uri, string $action, array $middleware = [])
+    {
         $this->routes['POST'][$uri] = ['action' => $action, 'middleware' => $middleware];
     }
 
     public function dispatch()
-    { 
+    {
         $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         $requestMethod = $_SERVER['REQUEST_METHOD'];
 
@@ -35,13 +37,15 @@ class Router
             [$controllerName, $methodName] = explode('@', $this->routes[$requestMethod][$uri]['action']);
 
             $controllerClass = "App\Controller\\$controllerName";
-            $controller = new $controllerClass();
-            $controller->$methodName();
-            return;
+            if (class_exists($controllerClass)) {
+                $controller = new $controllerClass();
+                if (method_exists($controller, $methodName)) {
+                    $controller->$methodName();
+                    return;
+                }
+            }
         }
 
-        $controllerClass = "App\Controllers\NotFoundController";
-        $controller = new $controllerClass();
-        $controller->index();
+        echo "404 Not Found";
     }
 }
